@@ -11,7 +11,7 @@
   <!-- name:     Name of the robot link (without prefix)              -->
   <!-- inertial: Dictionary of inertia properties (see inertial.yaml) -->
   <!-- ============================================================== -->
-  <!-- <xacro:macro name="inertial_props" params="name inertial:=^">
+  <xacro:macro name="inertial_props" params="name inertial:=^">
       <xacro:unless value="${name in inertial}">${xacro.warning('No inertia properties defined for: ' + name)}</xacro:unless>
       <xacro:if value="${name in inertial}">
         <xacro:property name="inertial" value="${inertial[name]}" lazy_eval="false" />
@@ -22,7 +22,7 @@
           <inertia ixx="${I.xx}" ixy="${I.xy}" ixz="${I.xz}" iyy="${I.yy}" iyz="${I.yz}" izz="${I.zz}" />
         </inertial>
       </xacro:if>
-  </xacro:macro> -->
+  </xacro:macro>
 
   <!-- ========================================================== -->
   <!-- Macro to add a single link, both with                      -->

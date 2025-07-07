@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="franka_robot" params="arm_id parent:='world' xyz:='0 0 0' rpy:='0 0 0' hand:=false gazebo:=false tcp_xyz:='0 0 0.1034' tcp_rpy='0 0 0'">
+  <xacro:macro name="franka_robot" params="arm_id parent:='world' xyz:='0 0 0' rpy:='0 0 0' hand:=false gazebo:=false tcp_xyz:='0 0 0.1034' tcp_rpy='0 0 0' inertial_path:='$(arg inertial_path)'">
+
 
     <xacro:include filename="/home/shonosukehida/work/PLDM_franka_emika_panda/franka_ros/franka_description/robots/common/utils.xacro" />
     <xacro:include filename="/home/shonosukehida/work/PLDM_franka_emika_panda/franka_ros/franka_description/robots/common/franka_arm.xacro" />
 
-    <xacro:franka_arm arm_id="${arm_id}" safety_distance="0.03" gazebo="${gazebo}"/>
+    <xacro:property name="inertial" value="${xacro.load_yaml(filename=inertial_path)}"/>
+    <xacro:franka_arm arm_id="${arm_id}" safety_distance="0.03" gazebo="${gazebo}" inertial="${inertial}"/>
+
 
     <xacro:if value="${hand}">
       <xacro:include filename="/home/shonosukehida/work/PLDM_franka_emika_panda/franka_ros/franka_description/robots/common/franka_hand.xacro"/>

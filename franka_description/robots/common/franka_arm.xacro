@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
-  <xacro:macro name="franka_arm" params="arm_id:='panda' connected_to:='' xyz:='0 0 0' rpy:='0 0 0' gazebo:=false safety_distance:=0">
+  <xacro:macro name="franka_arm" params="arm_id:='panda' connected_to:='' xyz:='0 0 0' rpy:='0 0 0' gazebo:=false safety_distance:=0 inertial:=^">
+
     <xacro:unless value="${not connected_to}">
       <joint name="${arm_id}_joint_${connected_to}" type="fixed">
         <parent link="${connected_to}"/>
@@ -67,12 +68,50 @@
       <limit lower="-2.8973" upper="2.8973" velocity="2.61" effort="12.0"/>
     </joint>
 
-    <link name="${arm_id}_link8"/>
+    <!-- <link name="${arm_id}_link8"/>
     <joint name="${arm_id}_joint8" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0.107"/>
       <parent link="${arm_id}_link7"/>
       <child link="${arm_id}_link8"/>
-    </joint>
+    </joint> -->
+
+    <link name="${arm_id}_link0">
+      <xacro:inertial_props name="${arm_id}_link0" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link1">
+      <xacro:inertial_props name="${arm_id}_link1" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link2">
+      <xacro:inertial_props name="${arm_id}_link2" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link3">
+      <xacro:inertial_props name="${arm_id}_link3" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link4">
+      <xacro:inertial_props name="${arm_id}_link4" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link5">
+      <xacro:inertial_props name="${arm_id}_link5" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link6">
+      <xacro:inertial_props name="${arm_id}_link6" inertial="${inertial}" />
+    </link>
+
+
+    <link name="${arm_id}_link7">
+      <xacro:inertial_props name="${arm_id}_link7" inertial="${inertial}" />
+    </link>
+
+    <link name="${arm_id}_link8">
+      <xacro:inertial_props name="${arm_id}_link8" inertial="${inertial}" />
+    </link>
+
 
   </xacro:macro>
 </robot>

@@ -2,6 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
 
   <xacro:include filename="/home/shonosukehida/work/PLDM_franka_emika_panda/franka_ros/franka_description/robots/common/franka_robot.xacro"/>
+  <!-- inertial YAML のパス -->
+  <xacro:arg name="inertial_path" default="$(find franka_description)/robots/common/inertial.yaml"/>
+
 
   <!-- Name for this robot -->
   <xacro:arg name="arm_id" default="panda" />
